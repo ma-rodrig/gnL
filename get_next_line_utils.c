@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marodrig <marodrig@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: marodrig <marodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:45:26 by marodrig          #+#    #+#             */
-/*   Updated: 2024/10/11 17:30:35 by marodrig         ###   ########.fr       */
+/*   Updated: 2024/10/12 16:21:33 by marodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ size_t	ft_strlen(const char *str)
 		i++;
 	return (i);
 }
-char	*ft_strchr(const char *s, int c)
+
+char	*ft_strchr(char *s, int c)
 {
 	int	i;
 
