@@ -6,20 +6,20 @@
 /*   By: marodrig <marodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:45:26 by marodrig          #+#    #+#             */
-/*   Updated: 2024/10/12 16:21:33 by marodrig         ###   ########.fr       */
+/*   Updated: 2024/10/12 16:29:44 by marodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strlen(char *s)
 {
 	size_t	i;
 
 	i = 0;
-	if (!str)
+	if (!s)
 		return (0);
-	while (str[i])
+	while (s[i] != '\0')
 		i++;
 	return (i);
 }

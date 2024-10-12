@@ -6,7 +6,7 @@
 /*   By: marodrig <marodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:45:10 by marodrig          #+#    #+#             */
-/*   Updated: 2024/10/12 16:15:38 by marodrig         ###   ########.fr       */
+/*   Updated: 2024/10/12 16:30:15 by marodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*new_line(char *line);
 char	*get_line(char *line);
 char	*read_line(int fd, char *line);
 
-size_t	ft_strlen(const char *str);
+size_t	ft_strlen(char *s);
 char	*ft_strchr(char *s, int c);
 char	*ft_strjoin(char *line, char *buff);
 

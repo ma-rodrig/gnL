@@ -6,12 +6,11 @@
 /*   By: marodrig <marodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:42:33 by marodrig          #+#    #+#             */
-/*   Updated: 2024/10/12 16:23:14 by marodrig         ###   ########.fr       */
+/*   Updated: 2024/10/12 16:29:09 by marodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <string.h>
 
 char	*read_line(int fd, char *line)
 {
@@ -22,7 +21,7 @@ char	*read_line(int fd, char *line)
 	if (!buffer)
 		return (NULL);
 	bytes_read = 1;
-	while (!ft_strchr(buffer, '\n') && bytes_read > 0)
+	while (!ft_strchr(line, '\n') && bytes_read > 0)
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read == -1)
@@ -34,7 +33,7 @@ char	*read_line(int fd, char *line)
 		line = ft_strjoin(line, buffer);
 		if (!line)
 		{
-			free (line);
+			free (buffer);
 			return (NULL);
 		}
 	}
