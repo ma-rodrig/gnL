@@ -6,7 +6,7 @@
 /*   By: marodrig <marodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 14:42:33 by marodrig          #+#    #+#             */
-/*   Updated: 2024/10/12 16:29:09 by marodrig         ###   ########.fr       */
+/*   Updated: 2024/10/15 13:00:31 by marodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,36 @@
 
 char	*read_line(int fd, char *line)
 {
-	char	*buffer;
+	char	*buff;
 	ssize_t	bytes_read;
 
-	buffer = (char *)malloc(BUFFER_SIZE + 1);
-	if (!buffer)
+	buff = (char *)malloc(BUFFER_SIZE + 1);
+	if (!buff)
 		return (NULL);
 	bytes_read = 1;
-	while (!ft_strchr(line, '\n') && bytes_read > 0)
+	while (!ft_schr(line, '\n') && bytes_read > 0)
 	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		bytes_read = read(fd, buff, BUFFER_SIZE);
 		if (bytes_read == -1)
 		{
-			free(buffer);
+			free(buff);
 			return (NULL);
 		}
-		buffer[bytes_read] = '\0';
-		line = ft_strjoin(line, buffer);
+		buff[bytes_read] = '\0';
+		line = ft_sjoin(line, buff);
 		if (!line)
 		{
-			free (buffer);
+			free (buff);
 			return (NULL);
 		}
 	}
-	free(buffer);
+	free(buff);
 	return (line);
 }
 
 char	*get_line(char *line)
 {
-	char	*str;
+	char	*s;
 	int		i;
 
 	i = 0;
@@ -51,27 +51,27 @@ char	*get_line(char *line)
 		return (NULL);
 	while (line[i] && line[i] != '\n')
 		i++;
-	str = (char *)malloc(i + 2);
-	if (!str)
+	s = (char *)malloc(i + 2);
+	if (!s)
 		return (NULL);
 	i = 0;
 	while (line[i] && line[i] != '\n')
 	{
-		str[i] = line[i];
+		s[i] = line[i];
 		i++;
 	}
 	if (line[i] == '\n')
 	{
-		str[i] = line[i];
+		s[i] = line[i];
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	s[i] = '\0';
+	return (s);
 }
 
 char	*new_line(char *line)
 {
-	char	*str;
+	char	*s;
 	int		i;
 	int		j;
 
@@ -83,31 +83,31 @@ char	*new_line(char *line)
 		free(line);
 		return (NULL);
 	}
-	str = (char *)malloc(sizeof(char) * ft_strlen(line) - i + 1);
-	if (!str)
+	s = (char *)malloc(sizeof(char) * ft_slen(line) - i + 1);
+	if (!s)
 		return (NULL);
 	i++;
 	j = 0;
 	while (line[i])
-		str[j++] = line[i++];
-	str[j] = '\0';
+		s[j++] = line[i++];
+	s[j] = '\0';
 	free(line);
-	return (str);
+	return (s);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*line;
-	char		*next_line;
+	char		*prox_line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	line = read_line(fd, line);
 	if (!line)
 		return (NULL);
-	next_line = get_line(line);
+	prox_line = get_line(line);
 	line = new_line(line);
-	return (next_line);
+	return (prox_line);
 }
 
 /* #include "get_next_line.h"
